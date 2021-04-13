@@ -35,26 +35,13 @@ def calc_checksum(data):
 
 def create_lkas_hud(packer, gear, lkas_active, hud_alert, hud_count, lkas_car_model):
   # LKAS_HUD 0x2a6 (678) Controls what lane-keeping icon is displayed.
-  # Chrysler came up with this scheme, not me
-  if enabled:
-    if left_lane_visible:
-      if right_lane_visible:
-        lane_visibility_signal = 0x6  # Both sides white
-      else:
-        lane_visibility_signal = 0x2  # Left only white
-    elif right_lane_visible:
-      lane_visibility_signal = 0x3    # Right only white
-    else:
-      lane_visibility_signal = 0x1    # Neither lane border shown
-  else:
-    lane_visibility_signal = 0x1      # Neither lane border shown
+  #This could use some work, pretty rudamentary
 
   values = {
     "SET_ME_0XAC": 0xAC,
-    "LKAS_ICON_COLOR": 2 if enabled else 1,
-    "LKAS_LANE_LINES": lane_visibility_signal,
+    "LKAS_ICON_COLOR": 2 if lkas_active else 1,
+    "LKAS_LANE_LINES": 6 if lkas_active else 1
   }
-
   return packer.make_can_msg("LKAS_HUD", 0, values)  # 0x2a6
 
 
