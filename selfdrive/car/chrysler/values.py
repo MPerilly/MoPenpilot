@@ -105,9 +105,7 @@ DBC = {
   CAR.PACIFICA_2019_HYBRID: dbc_dict('chrysler_pacifica_2017_hybrid', 'chrysler_pacifica_2017_hybrid_private_fusion'),
   CAR.JEEP_CHEROKEE: dbc_dict('chrysler_pacifica_2017_hybrid', 'chrysler_pacifica_2017_hybrid_private_fusion'),
   CAR.JEEP_CHEROKEE_2019: dbc_dict('chrysler_pacifica_2017_hybrid', 'chrysler_pacifica_2017_hybrid_private_fusion'),
-  CAR.KL_CHEROKEE: dbc_dict(
-    'lrr3_chrysler_200_kl',  # 'pt'
-    'lrr3_chrysler_200_kl_private_fusion'),
+  CAR.KL_CHEROKEE: dbc_dict('lrr3_chrysler_200_kl',  'lrr3_chrysler_200_kl_private_fusion'),
 }
 
 STEER_THRESHOLD = 120
