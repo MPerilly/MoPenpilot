@@ -6,16 +6,16 @@ const int CHRYSLER_MAX_RATE_DOWN = 10;
 const int CHRYSLER_MAX_TORQUE_ERROR = 800;    // max torque cmd in excess of torque motor (up from 80)
 const int CHRYSLER_GAS_THRSLD = 30;  // 7% more than 2m/s
 const int CHRYSLER_STANDSTILL_THRSLD = 10;  // about 1m/s
-const CanMsg CHRYSLER_TX_MSGS[] = {{762, 0}, {502, 0}, {1500, 0}};
+const CanMsg CHRYSLER_TX_MSGS[] = {{762, 0, 3}, {502, 0, 6}, {1500, 0, 8}};
 
 // TODO: do checksum and counter checks
 AddrCheckStruct chrysler_rx_checks[] = {
-  {.addr = {492}, .bus = 0, .check_checksum = true, .max_counter = 15U, .expected_timestep = 10000U}, // EPS_STATUS
-  {.addr = {740}, .bus = 0, .check_checksum = false, .max_counter = 0U, .expected_timestep = 10000U}, // SPEED_1
-  {.addr = {498}, .bus = 0, .check_checksum = true, .max_counter = 15U, .expected_timestep = 20000U}, // ACC_2
-  {.addr = {510}, .bus = 0, .check_checksum = false, .max_counter = 15U,  .expected_timestep = 20000U}, // ACCEL_GAS
-  {.addr = {738}, .bus = 0, .check_checksum = true, .max_counter = 15U,  .expected_timestep = 20000U}, // BRAKE_2
-  {.addr = {1006}, .bus = 0, .check_checksum = false, .max_counter = 0U, .expected_timestep = 60000U}, // ACC_1
+  {.msg = {{492, 0, 8, .check_checksum = true, .max_counter = 15U, .expected_timestep = 10000U}}}, // EPS_STATUS
+  {.msg = {{740, 0, 8, .check_checksum = false, .max_counter = 0U, .expected_timestep = 10000U}}}, // SPEED_1
+  {.msg = {{498, 0, 8, .check_checksum = true, .max_counter = 15U, .expected_timestep = 20000U}}}, // ACC_2
+  {.msg = {{510, 0, 8, .check_checksum = false, .max_counter = 15U,  .expected_timestep = 20000U}}}, // ACCEL_GAS
+  {.msg = {{738, 0, 8, .check_checksum = true, .max_counter = 15U,  .expected_timestep = 20000U}}}, // BRAKE_2
+  {.msg = {{1006, 0, 8, .check_checksum = false, .max_counter = 0U, .expected_timestep = 60000U}}}, // ACC_1
 };
 const int CHRYSLER_RX_CHECK_LEN = sizeof(chrysler_rx_checks) / sizeof(chrysler_rx_checks[0]);
 
