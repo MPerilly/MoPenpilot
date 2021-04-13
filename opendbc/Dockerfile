@@ -49,7 +49,7 @@ RUN git clone https://github.com/commaai/cereal.git /project/cereal
 
 COPY SConstruct .
 COPY site_scons /project/site_scons
-COPY ../../../../Downloads/opendbc-774b4c98f6b2ae22f23703521e368918014d74b7 /project/opendbc
+COPY ../../../Downloads/opendbc-774b4c98f6b2ae22f23703521e368918014d74b7 /project/opendbc
 
 RUN rm -rf /project/opendbc/.git
 RUN scons -c && scons -j$(nproc)
